@@ -1,10 +1,13 @@
 package com.example.newslab.domain;
 
-public class NewsContent {
+import java.io.Serializable;
+
+public class NewsContent implements Serializable {
     private String title;
     private String content;
     private String picture;
     private String ctime;
+    private String source;
 
     public String getTitle() {
         return title;
@@ -36,5 +39,13 @@ public class NewsContent {
 
     public void setCtime(String ctime) {
         this.ctime = ctime;
+    }
+
+    public String getSource() {
+        return source;
+    }
+
+    public void setSource(String source) {
+        this.source = source;
     }
 }

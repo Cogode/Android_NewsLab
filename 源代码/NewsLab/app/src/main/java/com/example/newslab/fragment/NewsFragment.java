@@ -5,8 +5,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -47,10 +45,9 @@ public class NewsFragment extends Fragment {
         newsDigestRecyclerView = view.findViewById(R.id.newsDigest_RecyclerView);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
         newsDigestRecyclerView.setLayoutManager(layoutManager);
-        newsDigestRecyclerViewAdapter = new NewsDigestRecyclerViewAdapter(newsDigestsList, item -> {
+        newsDigestRecyclerViewAdapter = new NewsDigestRecyclerViewAdapter(newsDigestsList, index -> {
             Intent intent = new Intent(getActivity(), NewsContentActivity.class);
-            String title = ((TextView) view.findViewById(R.id.title_textView)).getText().toString();
-            intent.putExtra("url", getUrlByTitle(title));
+            intent.putExtra("newsDigest", newsDigestsList.get(index));
             startActivity(intent);
         }, position, isHavingImage);
         newsDigestRecyclerView.setAdapter(newsDigestRecyclerViewAdapter);
@@ -58,12 +55,5 @@ public class NewsFragment extends Fragment {
         newsDigestRecyclerView.scrollToPosition(0);
         String pageTitle = ((IndexActivity) getActivity()).getPageTitle(position);
         NewsUtil.refreshNewsDigest(pageTitle, newsDigestsList, newsDigestRecyclerView, newsDigestRecyclerViewAdapter);
-    }
-
-    private String getUrlByTitle(String title) {
-        for(int i = 0; i < newsDigestsList.size(); i ++)
-            if(newsDigestsList.get(i).getTitle().equals(title))
-                return newsDigestsList.get(i).getUrl();
-        return null;
     }
 }

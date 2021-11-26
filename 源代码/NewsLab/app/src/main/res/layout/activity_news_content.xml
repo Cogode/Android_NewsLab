@@ -16,15 +16,16 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:text="返回"
+            android:textSize="20sp"
             android:textColor="@color/white"
-            android:background="null" />
+            android:background="@color/purple_700" />
 
     </FrameLayout>
 
     <TextView
         android:id="@+id/title_textView"
         android:layout_width="match_parent"
-        android:layout_height="100dp" />
+        android:layout_height="wrap_content" />
 
     <View
         android:layout_width="match_parent"

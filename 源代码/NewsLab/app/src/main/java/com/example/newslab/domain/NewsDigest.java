@@ -1,6 +1,8 @@
 package com.example.newslab.domain;
 
-public class NewsDigest {
+import java.io.Serializable;
+
+public class NewsDigest implements Serializable {
     private String mtime;
     private String title;
     private String digest;

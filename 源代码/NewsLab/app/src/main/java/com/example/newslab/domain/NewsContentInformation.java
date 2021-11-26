@@ -1,8 +1,9 @@
 package com.example.newslab.domain;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class NewsContentInformation {
+public class NewsContentInformation implements Serializable {
     private String code;
     private String msg;
     private List<NewsContent> newslist;

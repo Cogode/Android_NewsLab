@@ -40,4 +40,7 @@ public interface NewsService {
 
     @GET("keji/index")
     Call<NewsDigestInformation> getTechnologyNewsDigest(@Query("key") String key, @Query("num") String num);
+
+    @GET("htmltext/index")
+    Call<NewsContentInformation> getNewsContent(@Query("key") String key, @Query("url") String url);
 }

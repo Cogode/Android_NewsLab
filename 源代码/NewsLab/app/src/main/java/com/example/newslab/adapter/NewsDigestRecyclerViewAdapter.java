@@ -22,7 +22,7 @@ public class NewsDigestRecyclerViewAdapter extends RecyclerView.Adapter<NewsDige
     private boolean isHavingImage;
 
     public interface OnClickListener {
-        void onClick(View view);
+        void onClick(int index);
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
@@ -75,7 +75,7 @@ public class NewsDigestRecyclerViewAdapter extends RecyclerView.Adapter<NewsDige
             holder.timeTextView.setText(newsDigest.getMtime());
         else
             holder.timeTextView.setText(newsDigest.getCtime());
-        holder.newsDigestItem.setOnClickListener(view -> clickListener.onClick(view));
+        holder.newsDigestItem.setOnClickListener(view -> clickListener.onClick(index));
     }
 
     @Override
