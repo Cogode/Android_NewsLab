@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.MainActivity">
+    tools:context=".activity.LoginActivity">
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -38,7 +38,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="*"
-                android:textSize="20sp" />
+                android:textSize="20sp"
+                android:textColor="#cc0000" />
 
             <TextView
                 android:layout_width="100dp"
@@ -57,7 +58,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="*"
-                android:textSize="20sp" />
+                android:textSize="20sp"
+                android:textColor="#cc0000" />
 
             <TextView
                 android:layout_width="100dp"
@@ -77,7 +79,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="*"
-                android:textSize="20sp" />
+                android:textSize="20sp"
+                android:textColor="#cc0000" />
 
             <TextView
                 android:layout_width="100dp"
@@ -97,7 +100,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="*"
-                android:textSize="20sp" />
+                android:textSize="20sp"
+                android:textColor="#cc0000" />
 
             <TextView
                 android:layout_width="100dp"

@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.IndexActivity">
-    
+    tools:context=".activity.NewsActivity">
+
     <ScrollView
         android:id="@+id/my_scrollView"
         android:layout_width="match_parent"
@@ -41,11 +41,11 @@
         app:layout_constraintBottom_toBottomOf="parent">
 
         <Button
-            android:id="@+id/home_page_btn"
+            android:id="@+id/news_page_btn"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:background="@drawable/nav_bottom_background_selected"
-            android:text="首页" />
+            android:text="资讯" />
 
         <Button
             android:id="@+id/contacts_page_btn"
@@ -55,11 +55,11 @@
             android:text="通讯录" />
 
         <Button
-            android:id="@+id/find_page_btn"
+            android:id="@+id/message_page_btn"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:background="@drawable/nav_bottom_background"
-            android:text="发现" />
+            android:text="消息" />
 
         <Button
             android:id="@+id/mine_page_btn"

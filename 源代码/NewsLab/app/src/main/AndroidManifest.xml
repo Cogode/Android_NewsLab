@@ -13,16 +13,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.NewsLab">
         <activity
+            android:name=".activity.MineActivity"
+            android:exported="true" />
+        <activity
             android:name=".activity.RegisterActivity"
             android:exported="true" />
         <activity
             android:name=".activity.NewsContentActivity"
             android:exported="true" />
         <activity
-            android:name=".activity.IndexActivity"
+            android:name=".activity.NewsActivity"
             android:exported="true" />
         <activity
-            android:name=".activity.MainActivity"
+            android:name=".activity.LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

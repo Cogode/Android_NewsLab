@@ -79,7 +79,7 @@ public class NewsUtil {
         }
     }
 
-    public static void refreshNewsContent(TextView titleTextView, TextView sourceTextView, TextView timeTextView,
+    public static void refreshNewsContent(TextView sourceTextView, TextView timeTextView,
                                           ImageView imageView, TextView contentTextView, NewsDigest newsDigest) {
         String key = "73796e33c14d95cebfe65179933f9052";
         String url = newsDigest.getUrl();
@@ -92,10 +92,9 @@ public class NewsUtil {
                         if(information.getCode().equals("200")) {
                             List<NewsContent> newslist = information.getNewslist();
                             NewsContent newsContent = newslist.get(0);
-                            titleTextView.setText(newsContent.getTitle());
                             sourceTextView.setText(newsDigest.getSource());
                             timeTextView.setText(newsContent.getCtime());
-                            Glide.with(titleTextView.getContext()).load(newsContent.getPicture()).into(imageView);
+                            Glide.with(sourceTextView.getContext()).load(newsContent.getPicture()).into(imageView);
                             contentTextView.setText(newsContent.getContent());
                         }
                     }
@@ -108,7 +107,6 @@ public class NewsUtil {
             });
         }
         else {
-            titleTextView.setText(newsDigest.getTitle());
             sourceTextView.setText(newsDigest.getSource());
             if(newsDigest.getCtime() != null && ! newsDigest.getCtime().equals(""))
                 timeTextView.setText(newsDigest.getCtime());
@@ -117,10 +115,10 @@ public class NewsUtil {
                     timeTextView.setText(newsDigest.getMtime());
             }
             if(newsDigest.getImgsrc() != null && ! newsDigest.getImgsrc().equals(""))
-                Glide.with(titleTextView.getContext()).load(newsDigest.getImgsrc()).into(imageView);
+                Glide.with(sourceTextView.getContext()).load(newsDigest.getImgsrc()).into(imageView);
             else {
                 if(newsDigest.getPicUrl() != null && ! newsDigest.getPicUrl().equals(""))
-                    Glide.with(titleTextView.getContext()).load(newsDigest.getPicUrl()).into(imageView);
+                    Glide.with(sourceTextView.getContext()).load(newsDigest.getPicUrl()).into(imageView);
                 else
                     imageView.setVisibility(View.GONE);
             }

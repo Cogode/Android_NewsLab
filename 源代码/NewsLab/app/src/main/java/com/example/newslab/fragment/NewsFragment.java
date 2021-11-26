@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.newslab.R;
-import com.example.newslab.activity.IndexActivity;
+import com.example.newslab.activity.NewsActivity;
 import com.example.newslab.activity.NewsContentActivity;
 import com.example.newslab.adapter.NewsDigestRecyclerViewAdapter;
 import com.example.newslab.domain.NewsDigest;
@@ -53,7 +53,7 @@ public class NewsFragment extends Fragment {
         newsDigestRecyclerView.setAdapter(newsDigestRecyclerViewAdapter);
         newsDigestRecyclerViewAdapter.notifyDataSetChanged();
         newsDigestRecyclerView.scrollToPosition(0);
-        String pageTitle = ((IndexActivity) getActivity()).getPageTitle(position);
+        String pageTitle = ((NewsActivity) getActivity()).getPageTitle(position);
         NewsUtil.refreshNewsDigest(pageTitle, newsDigestsList, newsDigestRecyclerView, newsDigestRecyclerViewAdapter);
     }
 }
