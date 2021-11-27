@@ -1,7 +1,6 @@
 package com.example.newslab.util;
 
 import android.util.Log;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -32,9 +31,9 @@ public class NewsUtil {
             callTemp = service.getEverydayNewsDigest(key);
         else if(title.equals("国内"))
             callTemp = service.getNationalNewsDigest(key, num);
-        else*/ if(title.equals("国际"))
+        else if(title.equals("国际"))
             callTemp = service.getInternationalNewsDigest(key, num);
-        else if(title.equals("互联网"))
+        else*/ if(title.equals("互联网"))
             callTemp = service.getInternetNewsDigest(key, num);
         else if(title.equals("军事"))
             callTemp = service.getMilitaryNewsDigest(key, num);
@@ -79,7 +78,7 @@ public class NewsUtil {
         }
     }
 
-    public static void refreshNewsContent(TextView sourceTextView, TextView timeTextView,
+    public static void refreshNewsContent(TextView titleTextView, TextView sourceTextView, TextView timeTextView,
                                           ImageView imageView, TextView contentTextView, NewsDigest newsDigest) {
         String key = "73796e33c14d95cebfe65179933f9052";
         String url = newsDigest.getUrl();
@@ -92,9 +91,11 @@ public class NewsUtil {
                         if(information.getCode().equals("200")) {
                             List<NewsContent> newslist = information.getNewslist();
                             NewsContent newsContent = newslist.get(0);
+                            if(newsContent.getPicture() != null)
+                                Glide.with(titleTextView.getContext()).load(newsContent.getPicture()).into(imageView);
+                            titleTextView.setText(newsContent.getTitle());
                             sourceTextView.setText(newsDigest.getSource());
                             timeTextView.setText(newsContent.getCtime());
-                            Glide.with(sourceTextView.getContext()).load(newsContent.getPicture()).into(imageView);
                             contentTextView.setText(newsContent.getContent());
                         }
                     }
@@ -107,20 +108,19 @@ public class NewsUtil {
             });
         }
         else {
+            if(newsDigest.getImgsrc() != null && ! newsDigest.getImgsrc().equals(""))
+                Glide.with(titleTextView.getContext()).load(newsDigest.getImgsrc()).into(imageView);
+            else {
+                if(newsDigest.getPicUrl() != null && ! newsDigest.getPicUrl().equals(""))
+                    Glide.with(titleTextView.getContext()).load(newsDigest.getPicUrl()).into(imageView);
+            }
+            titleTextView.setText(newsDigest.getTitle());
             sourceTextView.setText(newsDigest.getSource());
             if(newsDigest.getCtime() != null && ! newsDigest.getCtime().equals(""))
                 timeTextView.setText(newsDigest.getCtime());
             else {
                 if(newsDigest.getMtime() != null && ! newsDigest.getMtime().equals(""))
                     timeTextView.setText(newsDigest.getMtime());
-            }
-            if(newsDigest.getImgsrc() != null && ! newsDigest.getImgsrc().equals(""))
-                Glide.with(sourceTextView.getContext()).load(newsDigest.getImgsrc()).into(imageView);
-            else {
-                if(newsDigest.getPicUrl() != null && ! newsDigest.getPicUrl().equals(""))
-                    Glide.with(sourceTextView.getContext()).load(newsDigest.getPicUrl()).into(imageView);
-                else
-                    imageView.setVisibility(View.GONE);
             }
             contentTextView.setText(newsDigest.getDigest());
         }

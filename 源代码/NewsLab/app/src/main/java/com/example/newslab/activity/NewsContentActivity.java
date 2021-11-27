@@ -1,12 +1,13 @@
 package com.example.newslab.activity;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
-import android.widget.Button;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -28,11 +29,29 @@ public class NewsContentActivity extends AppCompatActivity {
         NewsDigest newsDigest = (NewsDigest) intent.getSerializableExtra("newsDigest");
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        toolbar.setTitle(newsDigest.getTitle());
+        getSupportActionBar().setTitle("");
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        TextView titleTextView = findViewById(R.id.title_textView);
         TextView sourceTextView = findViewById(R.id.source_textView);
         TextView timeTextView = findViewById(R.id.time_textView);
         ImageView imageView = findViewById(R.id.imageView);
         TextView contentTextView = findViewById(R.id.content_textView);
-        NewsUtil.refreshNewsContent(sourceTextView, timeTextView, imageView, contentTextView, newsDigest);
+        NewsUtil.refreshNewsContent(titleTextView, sourceTextView, timeTextView, imageView, contentTextView, newsDigest);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch(item.getItemId()) {
+            case android.R.id.home:
+                this.finish();
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

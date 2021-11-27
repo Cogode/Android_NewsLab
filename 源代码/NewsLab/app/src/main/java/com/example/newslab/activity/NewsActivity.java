@@ -12,6 +12,7 @@ import android.widget.GridLayout;
 import com.example.newslab.R;
 import com.example.newslab.adapter.NewsPagerAdapter;
 import com.example.newslab.fragment.NewsFragment;
+import com.example.newslab.util.AnimationUtil;
 import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
@@ -25,7 +26,7 @@ public class NewsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_index);
+        setContentView(R.layout.activity_news);
         init();
     }
 
@@ -48,11 +49,13 @@ public class NewsActivity extends AppCompatActivity {
             Button button = (Button) keyboard.getChildAt(i);
             button.setWidth(screenWidth / columnCount);
         }
-        Button mineButton = findViewById(R.id.mine_page_btn);
-        mineButton.setOnClickListener(view -> {
-            Intent intent = new Intent(NewsActivity.this, MineActivity.class);
-            intent.putExtra("user", getIntent().getSerializableExtra("user"));
-            startActivity(intent);
+        Button minePageButton = findViewById(R.id.mine_page_btn);
+        minePageButton.setOnClickListener(view -> {
+            Intent toMineIntent = new Intent(NewsActivity.this, MineActivity.class);
+            toMineIntent.putExtra("user", getIntent().getSerializableExtra("user"));
+            startActivity(toMineIntent);
+            AnimationUtil.slideInRight(this);
+            this.finish();
         });
     }
 

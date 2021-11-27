@@ -14,18 +14,23 @@
         android:theme="@style/Theme.NewsLab">
         <activity
             android:name=".activity.MineActivity"
+            android:screenOrientation="portrait"
             android:exported="true" />
         <activity
             android:name=".activity.RegisterActivity"
+            android:screenOrientation="portrait"
             android:exported="true" />
         <activity
             android:name=".activity.NewsContentActivity"
+            android:screenOrientation="portrait"
             android:exported="true" />
         <activity
             android:name=".activity.NewsActivity"
+            android:screenOrientation="portrait"
             android:exported="true" />
         <activity
             android:name=".activity.LoginActivity"
+            android:screenOrientation="portrait"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

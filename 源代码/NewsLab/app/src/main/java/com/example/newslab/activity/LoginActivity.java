@@ -65,10 +65,15 @@ public class LoginActivity extends AppCompatActivity {
                         Intent intent = new Intent(LoginActivity.this, NewsActivity.class);
                         intent.putExtra("user", DBUtil.findUserById(dbHelper, user.getId()));
                         startActivity(intent);
+                        this.finish();
                     }
                 }
             }
         }
+        Intent intent = getIntent();
+        String initId = intent.getStringExtra("id");
+        if(initId != null)
+            idEditText.setText(initId);
         Button loginBtn = findViewById(R.id.login_btn);
         loginBtn.setOnClickListener(view -> {
             String id = idEditText.getText().toString();
@@ -98,9 +103,10 @@ public class LoginActivity extends AppCompatActivity {
                         else
                             editor.putBoolean("auto", false);
                         editor.apply();
-                        Intent intent = new Intent(LoginActivity.this, NewsActivity.class);
-                        intent.putExtra("user", DBUtil.findUserById(dbHelper, user.getId()));
-                        startActivity(intent);
+                        Intent toNewsIntent = new Intent(LoginActivity.this, NewsActivity.class);
+                        toNewsIntent.putExtra("user", DBUtil.findUserById(dbHelper, user.getId()));
+                        startActivity(toNewsIntent);
+                        this.finish();
                     }
                 }
             }
@@ -109,8 +115,9 @@ public class LoginActivity extends AppCompatActivity {
         registerBtn.setOnClickListener(view -> {
             editor.putBoolean("remember", false);
             editor.putBoolean("auto", false);
-            Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
-            startActivity(intent);
+            Intent toRegisterIntent = new Intent(LoginActivity.this, RegisterActivity.class);
+            startActivity(toRegisterIntent);
+            this.finish();
         });
     }
 }

@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import com.example.newslab.R;
 import com.example.newslab.domain.User;
+import com.example.newslab.util.AnimationUtil;
 import com.example.newslab.util.DBUtil;
 import com.example.newslab.util.MySQLiteOpenHelper;
 
@@ -58,6 +59,13 @@ public class RegisterActivity extends AppCompatActivity {
         loginBtn.setOnClickListener(view -> {
             Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
             startActivity(intent);
+            this.finish();
         });
+    }
+
+    @Override
+    public void finish() {
+        super.finish();
+        AnimationUtil.slideInLeft(this);
     }
 }

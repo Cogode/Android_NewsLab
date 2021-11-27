@@ -22,7 +22,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 app:tabGravity="fill"
-                app:tabMode="scrollable" />
+                app:tabMode="scrollable"
+                app:tabTextColor="#ccc"
+                android:background="#eee"
+                app:tabSelectedTextColor="@color/black"
+                app:tabIndicatorHeight="0dp" />
 
             <androidx.viewpager.widget.ViewPager
                 android:id="@+id/viewPager"
@@ -45,7 +49,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:background="@drawable/nav_bottom_background_selected"
-            android:text="资讯" />
+            android:text="社区" />
 
         <Button
             android:id="@+id/contacts_page_btn"
