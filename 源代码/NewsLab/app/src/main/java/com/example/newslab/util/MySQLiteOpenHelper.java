@@ -11,7 +11,9 @@ public class MySQLiteOpenHelper extends SQLiteOpenHelper {
                                     "id text primary key," +
                                     "name text not null," +
                                     "password text not null," +
-                                    "tel text)";
+                                    "tel text," +
+                                    "headPath text," +
+                                    "backgroundPath text)";
 
     public MySQLiteOpenHelper(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);

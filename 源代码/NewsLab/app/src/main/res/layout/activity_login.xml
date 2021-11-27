@@ -7,7 +7,7 @@
     tools:context=".activity.LoginActivity">
 
     <com.google.android.material.card.MaterialCardView
-        android:layout_width="350dp"
+        android:layout_width="320dp"
         android:layout_height="wrap_content"
         app:cardCornerRadius="20dp"
         app:cardBackgroundColor="#ffc"
@@ -26,7 +26,7 @@
             <GridLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:columnCount="3">
+                android:columnCount="2">
 
                 <TextView
                     android:layout_width="100dp"
@@ -42,33 +42,6 @@
                     android:textAlignment="center" />
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="*"
-                    android:textSize="20sp"
-                    android:textColor="#cc0000" />
-
-                <TextView
-                    android:layout_width="100dp"
-                    android:layout_height="50dp"
-                    android:gravity="center"
-                    android:text="昵称："
-                    android:textSize="20sp" />
-
-                <EditText
-                    android:id="@+id/user_name"
-                    android:layout_width="200dp"
-                    android:layout_height="50dp"
-                    android:textAlignment="center" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="*"
-                    android:textSize="20sp"
-                    android:textColor="#cc0000" />
-
-                <TextView
                     android:layout_width="100dp"
                     android:layout_height="50dp"
                     android:gravity="center"
@@ -79,48 +52,7 @@
                     android:id="@+id/user_password"
                     android:layout_width="200dp"
                     android:layout_height="50dp"
-                    android:textAlignment="center"
-                    android:password="true" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="*"
-                    android:textSize="20sp"
-                    android:textColor="#cc0000" />
-
-                <TextView
-                    android:layout_width="100dp"
-                    android:layout_height="50dp"
-                    android:gravity="center"
-                    android:text="确认密码："
-                    android:textSize="20sp" />
-
-                <EditText
-                    android:id="@+id/user_confirmPassword"
-                    android:layout_width="200dp"
-                    android:layout_height="50dp"
-                    android:textAlignment="center"
-                    android:password="true" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="*"
-                    android:textSize="20sp"
-                    android:textColor="#cc0000" />
-
-                <TextView
-                    android:layout_width="100dp"
-                    android:layout_height="50dp"
-                    android:gravity="center"
-                    android:text="电话："
-                    android:textSize="20sp" />
-
-                <EditText
-                    android:id="@+id/user_tel"
-                    android:layout_width="200dp"
-                    android:layout_height="50dp"
+                    android:password="true"
                     android:textAlignment="center" />
 
             </GridLayout>
@@ -129,18 +61,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp">
+                android:layout_marginTop="10dp">
 
                 <Button
                     android:id="@+id/login_btn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="10dp"
-                    android:text="返    回"
+                    android:text="登    录"
                     android:textSize="20sp"
                     android:background="@drawable/nav_bottom_background"
-                    android:layout_marginRight="10dp" />
+                    android:layout_marginRight="10dp"/>
 
                 <Button
                     android:id="@+id/register_btn"
@@ -150,6 +81,34 @@
                     android:text="注    册"
                     android:textSize="20sp"
                     android:background="@drawable/nav_bottom_background" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_marginTop="10dp">
+
+                <CheckBox
+                    android:id="@+id/remember_password"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="记住密码" />
+
+                <CheckBox
+                    android:id="@+id/auto_login"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="自动登录" />
 
             </LinearLayout>
 

@@ -22,18 +22,19 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class NewsUtil {
-    public static void refreshNewsDigest(String title, ArrayList<NewsDigest> newsDigestList, RecyclerView recyclerView, NewsDigestRecyclerViewAdapter adapter) {
+    public static void refreshNewsDigest(String title, ArrayList<NewsDigest> newsDigestList,
+                                         RecyclerView recyclerView, NewsDigestRecyclerViewAdapter adapter) {
         String key = "73796e33c14d95cebfe65179933f9052";
         String num = "50";
         NewsService service = ServiceCreator.create(NewsService.class);
         Call<NewsDigestInformation> callTemp = null;
-        /*if(title.equals("每日"))
+        if(title.equals("每日"))
             callTemp = service.getEverydayNewsDigest(key);
         else if(title.equals("国内"))
             callTemp = service.getNationalNewsDigest(key, num);
         else if(title.equals("国际"))
             callTemp = service.getInternationalNewsDigest(key, num);
-        else*/ if(title.equals("互联网"))
+        else if(title.equals("互联网"))
             callTemp = service.getInternetNewsDigest(key, num);
         else if(title.equals("军事"))
             callTemp = service.getMilitaryNewsDigest(key, num);
@@ -59,6 +60,7 @@ public class NewsUtil {
                     if(information != null) {
                         if(information.getCode().equals("200")) {
                             List<NewsDigest> newslist = information.getNewslist();
+                            newsDigestList.clear();
                             for(int i = 0; i < newslist.size(); i++) {
                                 if(newslist.get(i).getSource() == null || newslist.get(i).getSource().equals(""))
                                     newslist.get(i).setSource("网易热点");

@@ -22,6 +22,7 @@ public class NewsActivity extends AppCompatActivity {
     private ViewPager viewPager;
     private NewsPagerAdapter pagerAdapter;
     private ArrayList<Fragment> fragments = new ArrayList<>();
+    private int SLIDE_MODE;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +43,7 @@ public class NewsActivity extends AppCompatActivity {
         pagerAdapter = new NewsPagerAdapter(getSupportFragmentManager(), fragments);
         viewPager.setAdapter(pagerAdapter);
         tabLayout.setupWithViewPager(viewPager);
+
         GridLayout keyboard = findViewById(R.id.nav_bottom);
         int screenWidth = getWindowManager().getDefaultDisplay().getWidth();
         int columnCount = keyboard.getColumnCount();
@@ -49,17 +51,47 @@ public class NewsActivity extends AppCompatActivity {
             Button button = (Button) keyboard.getChildAt(i);
             button.setWidth(screenWidth / columnCount);
         }
+
+        Button contactsPageButton = findViewById(R.id.contacts_page_btn);
+        contactsPageButton.setOnClickListener(view -> {
+            Intent toContactsIntent = new Intent(NewsActivity.this, ContactsActivity.class);
+            toContactsIntent.putExtra("user", getIntent().getSerializableExtra("user"));
+            startActivity(toContactsIntent);
+            SLIDE_MODE = 1;
+            this.finish();
+        });
+        Button messagePageButton = findViewById(R.id.message_page_btn);
+        messagePageButton.setOnClickListener(view -> {
+            Intent toMessageIntent = new Intent(NewsActivity.this, MessageActivity.class);
+            toMessageIntent.putExtra("user", getIntent().getSerializableExtra("user"));
+            startActivity(toMessageIntent);
+            SLIDE_MODE = 1;
+            this.finish();
+        });
         Button minePageButton = findViewById(R.id.mine_page_btn);
         minePageButton.setOnClickListener(view -> {
             Intent toMineIntent = new Intent(NewsActivity.this, MineActivity.class);
             toMineIntent.putExtra("user", getIntent().getSerializableExtra("user"));
             startActivity(toMineIntent);
-            AnimationUtil.slideInRight(this);
+            SLIDE_MODE = 1;
             this.finish();
         });
     }
 
     public String getPageTitle(int position) {
         return String.valueOf(pagerAdapter.getPageTitle(position));
+    }
+
+    @Override
+    public void finish() {
+        super.finish();
+        switch(SLIDE_MODE) {
+            case 0:
+                AnimationUtil.slideInLeft(this);
+                break;
+            case 1:
+                AnimationUtil.slideInRight(this);
+                break;
+        }
     }
 }

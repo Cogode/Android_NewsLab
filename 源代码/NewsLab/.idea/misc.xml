@@ -6,13 +6,15 @@
         <entry key="..\:/Android/AndroidStudioProjects/projects/NewsLab/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1680921052631579" />
         <entry key="..\:/Android/AndroidStudioProjects/projects/NewsLab/app/src/main/res/drawable/nav_bottom_background.xml" value="0.22719298245614036" />
         <entry key="..\:/Android/AndroidStudioProjects/projects/NewsLab/app/src/main/res/drawable/nav_bottom_background_selected.xml" value="0.22719298245614036" />
+        <entry key="..\:/Android/AndroidStudioProjects/projects/NewsLab/app/src/main/res/layout/activity_contacts.xml" value="0.16019736842105264" />
         <entry key="..\:/Android/AndroidStudioProjects/projects/NewsLab/app/src/main/res/layout/activity_index.xml" value="0.21359649122807017" />
         <entry key="..\:/Android/AndroidStudioProjects/projects/NewsLab/app/src/main/res/layout/activity_login.xml" value="0.15670289855072464" />
         <entry key="..\:/Android/AndroidStudioProjects/projects/NewsLab/app/src/main/res/layout/activity_main.xml" value="0.21359649122807017" />
+        <entry key="..\:/Android/AndroidStudioProjects/projects/NewsLab/app/src/main/res/layout/activity_message.xml" value="0.16019736842105264" />
         <entry key="..\:/Android/AndroidStudioProjects/projects/NewsLab/app/src/main/res/layout/activity_mine.xml" value="0.16019736842105264" />
-        <entry key="..\:/Android/AndroidStudioProjects/projects/NewsLab/app/src/main/res/layout/activity_news.xml" value="0.21359649122807017" />
+        <entry key="..\:/Android/AndroidStudioProjects/projects/NewsLab/app/src/main/res/layout/activity_news.xml" value="0.10263157894736842" />
         <entry key="..\:/Android/AndroidStudioProjects/projects/NewsLab/app/src/main/res/layout/activity_news_content.xml" value="0.21359649122807017" />
-        <entry key="..\:/Android/AndroidStudioProjects/projects/NewsLab/app/src/main/res/layout/activity_register.xml" value="0.21359649122807017" />
+        <entry key="..\:/Android/AndroidStudioProjects/projects/NewsLab/app/src/main/res/layout/activity_register.xml" value="0.16019736842105264" />
         <entry key="..\:/Android/AndroidStudioProjects/projects/NewsLab/app/src/main/res/layout/fragment_newsDigest_list.xml" value="0.21359649122807017" />
         <entry key="..\:/Android/AndroidStudioProjects/projects/NewsLab/app/src/main/res/layout/fragment_news_content.xml" value="0.21359649122807017" />
         <entry key="..\:/Android/AndroidStudioProjects/projects/NewsLab/app/src/main/res/layout/fragment_news_digest.xml" value="0.21359649122807017" />
@@ -20,6 +22,7 @@
         <entry key="..\:/Android/AndroidStudioProjects/projects/NewsLab/app/src/main/res/layout/newsdigest_row_item.xml" value="0.21359649122807017" />
         <entry key="..\:/Android/AndroidStudioProjects/projects/NewsLab/app/src/main/res/layout/slide_in_right.xml" value="0.15098684210526317" />
         <entry key="..\:/Android/AndroidStudioProjects/projects/NewsLab/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1" />
+        <entry key="..\:/Android/AndroidStudioProjects/projects/NewsLab/app/src/main/res/xml/file_paths.xml" value="0.16019736842105264" />
       </map>
     </option>
   </component>

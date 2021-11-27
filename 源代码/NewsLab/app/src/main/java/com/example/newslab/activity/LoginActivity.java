@@ -21,7 +21,7 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_login);
         init();
     }
 
@@ -32,6 +32,8 @@ public class LoginActivity extends AppCompatActivity {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         CheckBox remember = findViewById(R.id.remember_password);
         CheckBox auto = findViewById(R.id.auto_login);
+
+        idEditText.setText(sharedPreferences.getString("id", ""));
         if(sharedPreferences.getBoolean("remember", false)) {
             remember.setChecked(true);
             idEditText.setText(sharedPreferences.getString("id", ""));
@@ -42,7 +44,7 @@ public class LoginActivity extends AppCompatActivity {
                 String password = passwordEditText.getText().toString();
                 User user = new User(id, password);
                 if(! DBUtil.isUserExisted(dbHelper, user))
-                    Toast.makeText(LoginActivity.this, "该用户不存在", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, "用户不存在", Toast.LENGTH_SHORT).show();
                 else {
                     if(! DBUtil.isPasswordTrue(dbHelper, user))
                         Toast.makeText(LoginActivity.this, "密码错误", Toast.LENGTH_SHORT).show();
@@ -70,10 +72,7 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         }
-        Intent intent = getIntent();
-        String initId = intent.getStringExtra("id");
-        if(initId != null)
-            idEditText.setText(initId);
+
         Button loginBtn = findViewById(R.id.login_btn);
         loginBtn.setOnClickListener(view -> {
             String id = idEditText.getText().toString();
@@ -83,7 +82,7 @@ public class LoginActivity extends AppCompatActivity {
             else {
                 User user = new User(id, password);
                 if(! DBUtil.isUserExisted(dbHelper, user))
-                    Toast.makeText(LoginActivity.this, "该用户不存在", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, "用户不存在", Toast.LENGTH_SHORT).show();
                 else {
                     if(! DBUtil.isPasswordTrue(dbHelper, user))
                         Toast.makeText(LoginActivity.this, "密码错误", Toast.LENGTH_SHORT).show();
@@ -111,6 +110,7 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         });
+
         Button registerBtn = findViewById(R.id.register_btn);
         registerBtn.setOnClickListener(view -> {
             editor.putBoolean("remember", false);

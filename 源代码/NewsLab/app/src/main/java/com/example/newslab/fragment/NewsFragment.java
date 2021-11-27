@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -27,6 +28,7 @@ public class NewsFragment extends Fragment {
     private RecyclerView newsDigestRecyclerView;
     private NewsDigestRecyclerViewAdapter newsDigestRecyclerViewAdapter;
     private ArrayList<NewsDigest> newsDigestsList = new ArrayList<>();
+    private String pageTitle;
 
     public NewsFragment(int layout, int position, boolean isHavingImage) {
         this.layout = layout;
@@ -53,7 +55,8 @@ public class NewsFragment extends Fragment {
         newsDigestRecyclerView.setAdapter(newsDigestRecyclerViewAdapter);
         newsDigestRecyclerViewAdapter.notifyDataSetChanged();
         newsDigestRecyclerView.scrollToPosition(0);
-        String pageTitle = ((NewsActivity) getActivity()).getPageTitle(position);
+
+        pageTitle = ((NewsActivity) getActivity()).getPageTitle(position);
         NewsUtil.refreshNewsDigest(pageTitle, newsDigestsList, newsDigestRecyclerView, newsDigestRecyclerViewAdapter);
     }
 }

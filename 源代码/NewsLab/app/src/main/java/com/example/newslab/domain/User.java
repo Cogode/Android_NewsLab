@@ -7,6 +7,8 @@ public class User implements Serializable {
     private String name;
     private String password;
     private String tel;
+    private String headPath;
+    private String backgroundPath;
 
     public User() {
 
@@ -53,5 +55,21 @@ public class User implements Serializable {
 
     public void setTel(String tel) {
         this.tel = tel;
+    }
+
+    public String getHeadPath() {
+        return headPath;
+    }
+
+    public void setHeadPath(String headPath) {
+        this.headPath = headPath;
+    }
+
+    public String getBackgroundPath() {
+        return backgroundPath;
+    }
+
+    public void setBackgroundPath(String backgroundPath) {
+        this.backgroundPath = backgroundPath;
     }
 }

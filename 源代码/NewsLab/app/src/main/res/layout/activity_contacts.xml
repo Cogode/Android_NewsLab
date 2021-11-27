@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <GridLayout
+        android:id="@+id/nav_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:columnCount="4"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <Button
+            android:id="@+id/news_page_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@drawable/nav_bottom_background"
+            android:text="社区" />
+
+        <Button
+            android:id="@+id/contacts_page_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@drawable/nav_bottom_background_selected"
+            android:text="通讯录" />
+
+        <Button
+            android:id="@+id/message_page_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@drawable/nav_bottom_background"
+            android:text="消息" />
+
+        <Button
+            android:id="@+id/mine_page_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@drawable/nav_bottom_background"
+            android:text="我" />
+
+    </GridLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
