@@ -61,9 +61,22 @@ public class NewsUtil {
                         if(information.getCode().equals("200")) {
                             List<NewsDigest> newslist = information.getNewslist();
                             newsDigestList.clear();
-                            for(int i = 0; i < newslist.size(); i++) {
-                                if(newslist.get(i).getSource() == null || newslist.get(i).getSource().equals(""))
-                                    newslist.get(i).setSource("网易热点");
+                            for(int i = 0; i < newslist.size(); i ++) {
+                                NewsDigest temp = newslist.get(i);
+                                if(temp.getSource() == null || temp.getSource().equals(""))
+                                    temp.setSource("网易热点");
+                                if(temp.getImgsrc() != null && ! temp.getImgsrc().equals("")) {
+                                    if(! temp.getImgsrc().split(":")[0].equals("http") && ! temp.getImgsrc().split(":")[0].equals("https"))
+                                        temp.setImgsrc("https:" + temp.getImgsrc());
+                                }
+                                if(temp.getPicUrl() != null && ! temp.getPicUrl().equals("")) {
+                                    if(! temp.getPicUrl().split(":")[0].equals("http") && ! temp.getPicUrl().split(":")[0].equals("https"))
+                                        temp.setPicUrl("https:" + temp.getPicUrl());
+                                }
+                                if(temp.getUrl() != null && ! temp.getUrl().equals("")) {
+                                    if(! temp.getUrl().split(":")[0].equals("http") && ! temp.getUrl().split(":")[0].equals("https"))
+                                        temp.setUrl("https:" + temp.getUrl());
+                                }
                                 newsDigestList.add(newslist.get(i));
                             }
                             adapter.notifyDataSetChanged();
@@ -93,6 +106,11 @@ public class NewsUtil {
                         if(information.getCode().equals("200")) {
                             List<NewsContent> newslist = information.getNewslist();
                             NewsContent newsContent = newslist.get(0);
+                            if(newsContent.getPicture() != null && ! newsContent.getPicture().equals("")) {
+                                if(! newsContent.getPicture().split(":")[0].equals("http") && ! newsContent.getPicture().split(":")[0].equals("https"))
+                                    newsContent.setPicture("https:" + newsContent.getPicture());
+                            }
+                            newsContent.setContent(NewsUtil.getMainContent(newsContent.getContent()));
                             if(newsContent.getPicture() != null)
                                 Glide.with(titleTextView.getContext()).load(newsContent.getPicture()).into(imageView);
                             titleTextView.setText(newsContent.getTitle());
@@ -126,5 +144,49 @@ public class NewsUtil {
             }
             contentTextView.setText(newsDigest.getDigest());
         }
+    }
+
+    public static String getMainContent(String content) {
+        boolean isParagraph = false;
+        boolean isStartParagraph = true;
+        boolean startFiltering = false;
+        for(int i = 0; i < content.length(); i ++) {
+            char current = content.charAt(i);
+            if(current == 'p') {
+                int sign = (i + 2) < content.length() ? (i + 2) : i;
+                if(content.charAt(i - 1) == '<' && content.charAt(sign) != '<') {
+                    isParagraph = true;
+                }
+            }
+            else if(current == '>') {
+                if(isParagraph) {
+                    if(isStartParagraph)
+                        isStartParagraph = false;
+                    else
+                        content = content.substring(0, i + 1) + "\n\n" + content.substring(i + 1);
+                    isParagraph = false;
+                }
+            }
+        }
+        for(int i = 0; i < content.length(); i ++) {
+            char current = content.charAt(i);
+            if(current == '<') {
+                startFiltering = true;
+                content = content.substring(0, i) + content.substring(i + 1);
+                i --;
+            }
+            else if(current == '>') {
+                startFiltering = false;
+                content = content.substring(0, i) + content.substring(i + 1);
+                i --;
+            }
+            else {
+                if(startFiltering) {
+                    content = content.substring(0, i) + content.substring(i + 1);
+                    i --;
+                }
+            }
+        }
+        return content;
     }
 }

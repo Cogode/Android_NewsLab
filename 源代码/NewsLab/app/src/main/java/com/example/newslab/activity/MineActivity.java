@@ -14,6 +14,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -23,11 +24,16 @@ import com.example.newslab.R;
 import com.example.newslab.domain.User;
 import com.example.newslab.util.AnimationUtil;
 import com.example.newslab.util.DBUtil;
+import com.example.newslab.util.FileUtil;
 import com.example.newslab.util.MySQLiteOpenHelper;
 
+import java.io.BufferedWriter;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -66,12 +72,24 @@ public class MineActivity extends AppCompatActivity {
         if(user.getHeadPath() == null)
             headImageView.setImageResource(R.mipmap.user_head_default);
         else {
-
+            try {
+                FileInputStream inputStream = new FileInputStream(user.getHeadPath());
+                Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
+                headImageView.setImageBitmap(bitmap);
+            } catch(Exception e) {
+                e.printStackTrace();
+            }
         }
         if(user.getBackgroundPath() == null)
             backgroundImageView.setImageResource(R.mipmap.user_background_default);
         else {
-
+            try {
+                FileInputStream inputStream = new FileInputStream(user.getBackgroundPath());
+                Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
+                backgroundImageView.setImageBitmap(bitmap);
+            } catch(Exception e) {
+                e.printStackTrace();
+            }
         }
 
         Button newsButton = findViewById(R.id.news_page_btn);
@@ -201,13 +219,16 @@ public class MineActivity extends AppCompatActivity {
                 }
                 else if(data != null)
                     bitmap = BitmapFactory.decodeStream(getContentResolver().openInputStream(data.getData()));
-                ByteArrayOutputStream bos = new ByteArrayOutputStream();
-                bitmap.compress(Bitmap.CompressFormat.PNG, 100, bos);
+                String path = FileUtil.saveBitmapByCurrentTime(bitmap, MineActivity.this);
                 if(requestCode > 0) {
                     headImageView.setImageBitmap(bitmap);
+                    user.setHeadPath(path);
+                    DBUtil.updateHeadPath(dbHelper, user);
                 }
                 else {
                     backgroundImageView.setImageBitmap(bitmap);
+                    user.setBackgroundPath(path);
+                    DBUtil.updateBackgroundPath(dbHelper, user);
                 }
             } catch(Exception e) {
                 e.printStackTrace();

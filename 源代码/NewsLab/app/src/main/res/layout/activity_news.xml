@@ -23,9 +23,9 @@
                 android:layout_height="50dp"
                 app:tabGravity="fill"
                 app:tabMode="scrollable"
-                app:tabTextColor="#ccc"
-                android:background="#eee"
-                app:tabSelectedTextColor="@color/black"
+                app:tabTextColor="#666"
+                android:background="@color/black"
+                app:tabSelectedTextColor="@color/white"
                 app:tabIndicatorHeight="0dp" />
 
             <androidx.viewpager.widget.ViewPager

@@ -81,9 +81,7 @@ public class DBUtil {
             user.setPassword(cursor.getString(passwordIndex));
             user.setTel(cursor.getString(telIndex));
             user.setHeadPath(cursor.getString(headPathIndex));
-            Log.i("TAG", "cursor.head=" + cursor.getString(headPathIndex));
             user.setBackgroundPath(cursor.getString(backgroundPathIndex));
-            Log.i("TAG", "cursor.background=" + cursor.getString(backgroundPathIndex));
         }
         return user;
     }

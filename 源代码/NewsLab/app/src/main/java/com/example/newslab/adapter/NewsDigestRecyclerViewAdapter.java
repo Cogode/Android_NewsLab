@@ -61,11 +61,8 @@ public class NewsDigestRecyclerViewAdapter extends RecyclerView.Adapter<NewsDige
         if(isHavingImage) {
             if(position == 0)
                 Glide.with(holder.newsDigestItem.getContext()).load(newsDigest.getImgsrc()).into(holder.imageView);
-            else {
-                if(! newsDigest.getPicUrl().split(":")[0].equals("http") && ! newsDigest.getPicUrl().split(":")[0].equals("https"))
-                    newsDigest.setPicUrl("https:" + newsDigest.getPicUrl());
+            else
                 Glide.with(holder.newsDigestItem.getContext()).load(newsDigest.getPicUrl()).into(holder.imageView);
-            }
         }
         else
             holder.imageView.setVisibility(View.GONE);

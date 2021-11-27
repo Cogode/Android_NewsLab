@@ -55,7 +55,6 @@ public class NewsFragment extends Fragment {
         newsDigestRecyclerView.setAdapter(newsDigestRecyclerViewAdapter);
         newsDigestRecyclerViewAdapter.notifyDataSetChanged();
         newsDigestRecyclerView.scrollToPosition(0);
-
         pageTitle = ((NewsActivity) getActivity()).getPageTitle(position);
         NewsUtil.refreshNewsDigest(pageTitle, newsDigestsList, newsDigestRecyclerView, newsDigestRecyclerViewAdapter);
     }
