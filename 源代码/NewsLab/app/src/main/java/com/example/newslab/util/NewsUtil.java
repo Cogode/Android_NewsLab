@@ -22,8 +22,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class NewsUtil {
-    public static void refreshNewsDigest(String title, ArrayList<NewsDigest> newsDigestList,
-                                         RecyclerView recyclerView, NewsDigestRecyclerViewAdapter adapter) {
+    public static void refreshNewsDigest(String title, ArrayList<NewsDigest> newsDigestList, RecyclerView recyclerView, NewsDigestRecyclerViewAdapter adapter) {
         String key = "73796e33c14d95cebfe65179933f9052";
         String num = "50";
         NewsService service = ServiceCreator.create(NewsService.class);
@@ -93,8 +92,7 @@ public class NewsUtil {
         }
     }
 
-    public static void refreshNewsContent(TextView titleTextView, TextView sourceTextView, TextView timeTextView,
-                                          ImageView imageView, TextView contentTextView, NewsDigest newsDigest) {
+    public static void refreshNewsContent(TextView titleTextView, TextView sourceTextView, TextView timeTextView, ImageView imageView, TextView contentTextView, NewsDigest newsDigest) {
         String key = "73796e33c14d95cebfe65179933f9052";
         String url = newsDigest.getUrl();
         if(url != null && ! url.equals("")) {
